@@ -1,0 +1,28 @@
+#A dictionary for the simplified dragon text game
+#The dictionary links a room to other rooms.
+rooms = {
+        'Great Hall': {'South': 'Bedroom'},
+        'Bedroom': {'North': 'Great Hall', 'East': 'Cellar'},
+        'Cellar': {'West': 'Bedroom'}
+    }
+#Player will start in 'Great Hall'
+beginning_room = 'Great Hall'
+
+
+while True:
+    print(f'You are currently in the {beginning_room}.')
+# Get player input
+    player_move = input('Enter direction to make a move: ')
+    direction = rooms[beginning_room]
+
+
+    if player_move in direction:
+        beginning_room = direction[player_move]
+
+    elif player_move == 'Exit':
+        print('Thanks for playing!')
+        break
+
+#wrong move input
+else:
+    print('Wrong direction!')
